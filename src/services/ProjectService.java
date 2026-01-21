@@ -1,26 +1,22 @@
+package services;
+
+import entities.Project;
+import exceptions.PastDeadlineException;
+import repositories.ProjectRepository;
 import java.sql.Date;
+import java.sql.SQLException;
 
-public class TaskService {
-    private TaskRepository taskRepository;
+public class ProjectService {
+    private final ProjectRepository projectRepository;
 
-    public TaskService(TaskRepository taskRepository) {
-        this.taskRepository = taskRepository;
+    public ProjectService(ProjectRepository projectRepository) {
+        this.projectRepository = projectRepository;
     }
 
-    public void addTask(Task task) throws PastDeadlineException, TaskWithoutProjectException, SQLException {
-        if (task.getDeadline().before(new Date(System.currentTimeMillis()))) {
-            throw new PastDeadlineException("Deadline cannot be in the past");
+    public void createProject(Project project) throws PastDeadlineException, SQLException {
+        if (project.getDeadline().before(new Date(System.currentTimeMillis()))) {
+            throw new PastDeadlineException("Project deadline cannot be in the past");
         }
-        if (task.getProjectId() <= 0) {
-            throw new TaskWithoutProjectException("Task must belong to a project");
-        }
-        taskRepository.save(task);
-    }
-
-    public void updateStatus(int taskId, String newStatus) throws InvalidStatusTransitionException, SQLException {
-        if (newStatus.equals("IN_PROGRESS")) {
-            throw new InvalidStatusTransitionException("Cannot move back to IN_PROGRESS once DONE");
-        }
-        taskRepository.updateStatus(taskId, newStatus);
+        projectRepository.save(project);
     }
 }

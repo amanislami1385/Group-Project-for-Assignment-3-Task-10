@@ -1,29 +1,35 @@
+package repositories;
+
+import entities.User;
 import java.sql.*;
 
-public class TaskRepository {
-    private Connection connection;
+public class UserRepository {
+    private final Connection connection;
 
-    public TaskRepository(Connection connection) {
+    public UserRepository(Connection connection) {
         this.connection = connection;
     }
 
-    public void save(Task task) throws SQLException {
+    public boolean existsByEmail(String email) throws SQLException {
         PreparedStatement stmt = connection.prepareStatement(
-                "INSERT INTO tasks (title, status, deadline, project_id) VALUES (?, ?, ?, ?)"
+                "SELECT COUNT(*) FROM users WHERE email = ?"
         );
-        stmt.setString(1, task.getTitle());
-        stmt.setString(2, task.getStatus());
-        stmt.setDate(3, task.getDeadline());
-        stmt.setInt(4, task.getProjectId());
-        stmt.executeUpdate();
+        stmt.setString(1, email);
+        ResultSet rs = stmt.executeQuery();
+        rs.next();
+        return rs.getInt(1) > 0;
     }
 
-    public void updateStatus(int taskId, String newStatus) throws SQLException {
-        PreparedStatement stmt = connection.prepareStatement(
-                "UPDATE tasks SET status = ? WHERE id = ?"
-        );
-        stmt.setString(1, newStatus);
-        stmt.setInt(2, taskId);
-        stmt.executeUpdate();
+    public void save(User user) throws SQLException {
+        if (!existsByEmail(user.getEmail())) {
+            PreparedStatement stmt = connection.prepareStatement(
+                    "INSERT INTO users (name, email) VALUES (?, ?)"
+            );
+            stmt.setString(1, user.getName());
+            stmt.setString(2, user.getEmail());
+            stmt.executeUpdate();
+        } else {
+            System.out.println("User with email " + user.getEmail() + " already exists.");
+        }
     }
 }

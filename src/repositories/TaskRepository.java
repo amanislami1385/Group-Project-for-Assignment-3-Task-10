@@ -1,7 +1,10 @@
+package repositories;
+
+import entities.Task;
 import java.sql.*;
 
 public class TaskRepository {
-    private Connection connection;
+    private final Connection connection;
 
     public TaskRepository(Connection connection) {
         this.connection = connection;
