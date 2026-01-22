@@ -20,4 +20,3 @@ public class Project {
     public Date getDeadline() { return deadline; }
     public int getUserId() { return userId; }
 }
-d
