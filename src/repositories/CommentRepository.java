@@ -19,4 +19,4 @@ public class CommentRepository {
         stmt.setInt(3, comment.getUserId());
         stmt.executeUpdate();
     }
-}
+}d
