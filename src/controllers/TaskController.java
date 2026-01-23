@@ -19,7 +19,6 @@ public class TaskController {
         }
     }
 
-
     public void changeTaskStatus(int taskId, String newStatus) {
         try {
             taskService.updateStatus(taskId, newStatus);
@@ -28,4 +27,4 @@ public class TaskController {
             System.out.println("Error: " + e.getMessage());
         }
     }
-}
+}d
