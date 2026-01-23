@@ -10,7 +10,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     public void createUser(User user) {
         try {
             userService.createUser(user);
@@ -19,4 +18,4 @@ public class UserController {
             System.out.println("Error: " + e.getMessage());
         }
     }
-}
+}de
