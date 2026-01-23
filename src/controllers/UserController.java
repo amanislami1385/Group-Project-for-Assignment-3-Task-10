@@ -10,7 +10,6 @@ public class UserController {
         this.userService = userService;
     }
 
-
     public void createUser(User user) {
         try {
             userService.createUser(user);

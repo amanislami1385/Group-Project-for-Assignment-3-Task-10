@@ -19,7 +19,6 @@ public class TaskController {
         }
     }
 
-
     public void changeTaskStatus(int taskId, String newStatus) {
         try {
             taskService.updateStatus(taskId, newStatus);
