@@ -10,7 +10,6 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-
     public void addComment(Comment comment) {
         try {
             commentService.addComment(comment);
@@ -19,4 +18,4 @@ public class CommentController {
             System.out.println("Error: " + e.getMessage());
         }
     }
-}
+}d
