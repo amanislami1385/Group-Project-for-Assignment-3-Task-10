@@ -20,7 +20,6 @@ import controllers.CommentController;
 
 import java.sql.*;
 
-
 public class Main {
     public static void main(String[] args) {
         try {
