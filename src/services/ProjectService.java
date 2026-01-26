@@ -14,6 +14,7 @@ public class ProjectService {
     }
 
 
+
     public void createProject(Project project) throws PastDeadlineException, SQLException {
         if (project.getDeadline().before(new Date(System.currentTimeMillis()))) {
             throw new PastDeadlineException("Project deadline cannot be in the past");
