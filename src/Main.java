@@ -20,7 +20,6 @@ import controllers.CommentController;
 
 import java.sql.*;
 
-
 public class Main {
     public static void main(String[] args) {
         try {
@@ -62,6 +61,7 @@ public class Main {
 
             Comment comment = new Comment(0, "This task was tricky but done!", 1, 1);
             commentController.addComment(comment);
+
 
             conn.close();
         } catch (Exception e) {
