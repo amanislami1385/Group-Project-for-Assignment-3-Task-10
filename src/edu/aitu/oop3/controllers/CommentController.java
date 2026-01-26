@@ -1,5 +1,4 @@
-package controllers;
-
+package edu.aitu.oop3.controllers;
 import entities.Comment;
 import services.CommentService;
 
@@ -9,7 +8,6 @@ public class CommentController {
     public CommentController(CommentService commentService) {
         this.commentService = commentService;
     }
-
 
     public void addComment(Comment comment) {
         try {
