@@ -27,6 +27,7 @@ public class TaskService {
     }
 
 
+
     public void updateStatus(int taskId, String newStatus) throws InvalidStatusTransitionException, SQLException {
         if ("IN_PROGRESS".equals(newStatus)) {
             throw new InvalidStatusTransitionException("Cannot move back to IN_PROGRESS once DONE");
