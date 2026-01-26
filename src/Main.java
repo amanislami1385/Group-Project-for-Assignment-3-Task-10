@@ -1,71 +1,71 @@
-import entities.User;
-import entities.Project;
-import entities.Task;
-import entities.Comment;
-
-import repositories.UserRepository;
-import repositories.ProjectRepository;
-import repositories.TaskRepository;
-import repositories.CommentRepository;
-
-import services.UserService;
-import services.ProjectService;
-import services.TaskService;
-import services.CommentService;
-
-import controllers.UserController;
-import controllers.ProjectController;
-import controllers.TaskController;
-import controllers.CommentController;
-
-import java.sql.*;
+import java.util.Scanner;
 
 public class Main {
+    static SupabaseService supabaseService = new SupabaseService();
+
     public static void main(String[] args) {
-        try {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
 
-            String url = "jdbc:postgresql://aws-1-us-west-1.pooler.supabase.com:5432/postgres?sslmode=require";
-            String user = "postgres.tguvrdybfojhwnnmkmjl";
-            String password = "aman1385@1000$usa";
+        System.out.println("Connected to Supabase successfully!");
 
-            Connection conn = DriverManager.getConnection(url, user, password);
-            System.out.println("Connected to Supabase successfully!");
+        do {
+            printMenu();
+            System.out.print("Enter your choice: ");
 
-            UserRepository userRepo = new UserRepository(conn);
-            ProjectRepository projectRepo = new ProjectRepository(conn);
-            TaskRepository taskRepo = new TaskRepository(conn);
-            CommentRepository commentRepo = new CommentRepository(conn);
+            while (!scanner.hasNextInt()) {
+                System.out.println("Invalid input. Please enter a number.");
+                scanner.next();
+            }
+            choice = scanner.nextInt();
+            scanner.nextLine();
 
-            UserService userService = new UserService(userRepo);
-            ProjectService projectService = new ProjectService(projectRepo);
-            TaskService taskService = new TaskService(taskRepo);
-            CommentService commentService = new CommentService(commentRepo);
+            switch (choice) {
+                case 1:
+                    System.out.print("Enter email: ");
+                    String email = scanner.nextLine();
+                    System.out.print("Enter password: ");
+                    String password = scanner.nextLine();
+                    supabaseService.createUser(email, password);
+                    break;
+                case 2:
+                    System.out.print("Enter project name: ");
+                    String projectName = scanner.nextLine();
+                    supabaseService.createProject(projectName);
+                    break;
+                case 3:
+                    System.out.print("Enter task ID: ");
+                    int taskId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter new status: ");
+                    String status = scanner.nextLine();
+                    supabaseService.updateTaskStatus(taskId, status);
+                    break;
+                case 4:
+                    System.out.print("Enter task ID: ");
+                    int commentTaskId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter comment: ");
+                    String comment = scanner.nextLine();
+                    supabaseService.addComment(commentTaskId, comment);
+                    break;
+                case 0:
+                    System.out.println("Exiting program...");
+                    break;
+                default:
+                    System.out.println("Invalid choice. Try again.");
+            }
+        } while (choice != 0);
 
-            UserController userController = new UserController(userService);
-            ProjectController projectController = new ProjectController(projectService);
-            TaskController taskController = new TaskController(taskService);
-            CommentController commentController = new CommentController(commentService);
+        scanner.close();
+    }
 
-            User newUser = new User(0, "Ahmad Rezai", "ahmadrezai06@example.com");
-            userController.createUser(newUser);
-
-            Project project = new Project(0, "Math Project", "Algebra homework",
-                    Date.valueOf("2026-02-01"), 1);
-            projectController.createProject(project);
-
-            Task task = new Task(0, "Solve equations", "TODO",
-                    Date.valueOf("2026-01-25"), 1);
-            taskController.createTask(task);
-
-            taskController.changeTaskStatus(1, "DONE");
-
-            Comment comment = new Comment(0, "This task was tricky but done!", 1, 1);
-            commentController.addComment(comment);
-
-
-            conn.close();
-        } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-        }
+    private static void printMenu() {
+        System.out.println("\n=== Main Menu ===");
+        System.out.println("1. Create User");
+        System.out.println("2. Create Project");
+        System.out.println("3. Update Task Status");
+        System.out.println("4. Add Comment");
+        System.out.println("0. Exit");
     }
 }
