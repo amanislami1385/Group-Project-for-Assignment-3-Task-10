@@ -1,13 +1,13 @@
 package edu.aitu.oop3;
 
-import edu.aitu.oop3.data.PostgresDB;
-import edu.aitu.oop3.data.IDB;
-import edu.aitu.oop3.entities.Project;
-import edu.aitu.oop3.entities.Task;
-import edu.aitu.oop3.patterns.ProjectBuilder;
-import edu.aitu.oop3.patterns.TaskFactory;
-import edu.aitu.oop3.repositories.ProjectRepository;
-import edu.aitu.oop3.util.TaskFilter;
+import edu.aitu.oop3.Infrastructure.data.PostgresDB;
+import edu.aitu.oop3.Infrastructure.data.IDB;
+import edu.aitu.oop3.components.Project.entities.Project;
+import edu.aitu.oop3.components.Task.entities.Task;
+import edu.aitu.oop3.components.Project.patterns.ProjectBuilder;
+import edu.aitu.oop3.components.Task.patterns.TaskFactory;
+import edu.aitu.oop3.components.Project.repositories.ProjectRepository;
+import edu.aitu.oop3.components.Task.utilities.TaskFilter;
 
 import java.util.ArrayList;
 import java.util.List;
