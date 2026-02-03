@@ -1,7 +1,7 @@
-package controllers;
+package edu.aitu.oop3.controllers;
 
-import entities.Task;
-import services.TaskService;
+import edu.aitu.oop3.entities.Task;
+import edu.aitu.oop3.services.TaskService;
 
 public class TaskController {
     private final TaskService taskService;
@@ -9,7 +9,6 @@ public class TaskController {
     public TaskController(TaskService taskService) {
         this.taskService = taskService;
     }
-
 
     public void createTask(Task task) {
         try {
