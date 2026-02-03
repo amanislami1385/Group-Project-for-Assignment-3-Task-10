@@ -1,7 +1,7 @@
-package controllers;
+package edu.aitu.oop3.controllers;
 
-import entities.User;
-import services.UserService;
+import edu.aitu.oop3.entities.User;
+import edu.aitu.oop3.services.UserService;
 
 public class UserController {
     private final UserService userService;
@@ -9,7 +9,6 @@ public class UserController {
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     public void createUser(User user) {
         try {
