@@ -39,7 +39,6 @@ public class ProjectRepository {
         return false;
     }
 
-
     private void saveTasks(int projectId, List<Task> tasks, Connection con) throws SQLException {
         if (tasks == null || tasks.isEmpty()) return;
 
