@@ -3,8 +3,8 @@ package edu.aitu.oop3.entities;
 public class User {
     private int id;
     private String name;
-    private String email;      // Added this field
-    private String password;   // Added this field
+    private String email;
+    private String password;
 
     public User(int id, String name, String email, String password) {
         this.id = id;
@@ -15,8 +15,8 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        this.email = "user@example.com"; // Default dummy email
-        this.password = "password123";   // Default dummy password
+        this.email = "user@example.com";
+        this.password = "password123";
     }
 
     public int getId() { return id; }
