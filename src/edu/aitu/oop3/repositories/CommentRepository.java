@@ -1,4 +1,4 @@
-package repositories;
+package edu.aitu.oop3.repositories;
 
 import entities.Comment;
 import java.sql.*;
