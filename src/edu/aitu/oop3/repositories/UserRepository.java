@@ -1,6 +1,6 @@
-package repositories;
+package edu.aitu.oop3.repositories;
 
-import entities.User;
+import edu.aitu.oop3.entities.User;
 import java.sql.*;
 
 public class UserRepository {
