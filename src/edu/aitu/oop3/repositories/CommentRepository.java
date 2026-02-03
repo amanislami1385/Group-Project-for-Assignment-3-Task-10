@@ -1,6 +1,6 @@
 package edu.aitu.oop3.repositories;
 
-import entities.Comment;
+import edu.aitu.oop3.entities.Comment;
 import java.sql.*;
 
 public class CommentRepository {
