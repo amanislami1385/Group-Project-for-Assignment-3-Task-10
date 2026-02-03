@@ -1,4 +1,4 @@
-package entities;
+package edu.aitu.oop3.entities;
 
 public class Comment {
     private int id;
