@@ -1,3 +1,5 @@
+package edu.aitu.oop3.services;
+
 public class SupabaseService {
     public void createUser(String email, String password) {
         System.out.println("User created successfully: " + email);
