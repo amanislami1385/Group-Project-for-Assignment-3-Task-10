@@ -4,15 +4,15 @@ public abstract class Task {
     private int id;
     private String title;
     private String description;
-    private int priority;       // 1. Priority Field
+    private int priority;
     private boolean completed;
     private String type;
 
     public Task(String title, String description, int priority) {
         this.title = title;
         this.description = description;
-        this.priority = priority; // 3. Assigns the priority
-        this.completed = false;   // Default value
+        this.priority = priority;
+        this.completed = false;
     }
 
     public int getId() { return id; }
