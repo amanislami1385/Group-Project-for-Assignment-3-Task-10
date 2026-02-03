@@ -1,11 +1,9 @@
-package services;
+package edu.aitu.oop3.services;
 
-import entities.Comment;
-import repositories.CommentRepository;
+import edu.aitu.oop3.entities.Comment;
+import edu.aitu.oop3.repositories.CommentRepository;
 
 import java.sql.SQLException;
-
-
 
 public class CommentService {
     private final CommentRepository commentRepository;
