@@ -1,6 +1,6 @@
 package edu.aitu.oop3.controllers;
-import entities.Comment;
-import services.CommentService;
+import edu.aitu.oop3.entities.Comment;
+import edu.aitu.oop3.services.CommentService;
 
 public class CommentController {
     private final CommentService commentService;
