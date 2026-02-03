@@ -23,7 +23,7 @@ public class TaskService {
 
     public List<Task> getHighPriorityTasks() {
         return repository.findAll().stream()
-                .filter(t -> t.getPriority() >= 4) // Lambda Expression
+                .filter(t -> t.getPriority() >= 4)
                 .collect(Collectors.toList());
     }
 
